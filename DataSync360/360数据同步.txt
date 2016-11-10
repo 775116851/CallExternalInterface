@@ -1,0 +1,38 @@
+﻿360数据同步
+USE O2O2
+GO--360区域表
+CREATE TABLE Area_360
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,
+CitySysNo INT ,
+DistrictSysNo INT,
+Code NVARCHAR(32),
+CityName NVARCHAR(15),
+DistrictName NVARCHAR(15),
+ZoneName NVARCHAR(10),
+Classid INT,
+Hatrank INT,
+[Status] SMALLINT,
+LastUpdateTime DATETIME
+)
+GO--360类别表
+CREATE TABLE Category_360
+(
+SysNo INT IDENTITY(1,1) PRIMARY KEY,
+Cateid INT,
+C1SysNo INT,
+C2SysNo INT,
+C1Name NVARCHAR(10),
+C2Name NVARCHAR(10),
+C3Name NVARCHAR(10),
+Alias NVARCHAR(10),
+APIName NVARCHAR(10),
+APINameEnd NVARCHAR(10),
+Isred SMALLINT,
+Isnew SMALLINT,
+Minihot SMALLINT,
+Minired SMALLINT,
+[Status] SMALLINT,
+LastUpdateTime DATETIME
+)
+GO
