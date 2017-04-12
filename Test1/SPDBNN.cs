@@ -974,9 +974,22 @@ namespace Test1
                 //System.Console.WriteLine( "ECB模式:" );  
                 //byte[] str1 = Des3.Des3EncodeECB( key, iv, data );
                 //string en = Convert.ToBase64String(str1);
-                byte[] data = Convert.FromBase64String(HttpUtility.UrlDecode(HttpUtility.UrlDecode(des3Str)));
-                //byte[] data = utf8.GetBytes(txtLE.Text.Trim());
-                //byte[] data = Convert.FromBase64String(HttpUtility.UrlEncode(HttpUtility.UrlEncode(HttpUtility.UrlDecode(txtLE.Text.Trim()))));
+                byte[] data = null;
+                try
+                {
+                    data = Convert.FromBase64String(HttpUtility.UrlDecode(HttpUtility.UrlDecode(des3Str)));
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        data = Convert.FromBase64String(HttpUtility.UrlDecode(des3Str));
+                    }
+                    catch (Exception)
+                    {
+                        data = Convert.FromBase64String(des3Str);
+                    }
+                }
                 byte[] str2 = Des3Util.Des3DecodeECB(key, iv, data);
                 return utf8.GetString(str2);
             }
